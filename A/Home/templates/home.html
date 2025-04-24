@@ -17,7 +17,7 @@
                 <div class="product">
                     <div class="left">
                         {% if resipe.image %}
-                            <img src="{{ resipe.image.url }}" style="border-radius: 15px;"/>
+                            <img src="{{ resipe.image.url }}" alt="" style="border-radius: 15px;width: 100%"/>
                         {% endif %}
                     </div>
                     <div class="right">
@@ -26,9 +26,8 @@
                         <p>{{ resipe.created_at }}</p>
                         <br>
                         <a href="{% url 'edit' resipe.id %}">✏️</a>
-                        {#                        <a href="{% url 'delete' resipe.id   %}">🗑️</a>#}
+                        {#<a href="{% url 'delete' resipe.id   %}">🗑️</a>#}
                     </div>
-
                 </div>
             {% endfor %}
         </div>
