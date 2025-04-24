@@ -38,14 +38,26 @@ body {
 }
 
 .product {
+    width: calc(100% / 3 - 35px); /* اینجا مقدار رو می‌تونی تنظیم کنی تا ستونهاتون تنظیم بشه */
+    margin-bottom: 30px;
     opacity: 0;
-    transition: opacity 0.6s ease;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .product.visible {
     opacity: 1;
+    transform: translateY(0);
 }
 
+.product .left img {
+    border-radius: 15px;
+    width: 100%;
+}
+
+.product .right {
+    padding: 10px;
+}
 
 .mother {
     max-width: 80%;
