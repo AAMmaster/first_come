@@ -17,7 +17,7 @@
                 <div class="product">
                     <div class="left">
                         {% if resipe.image %}
-                            <img src="{{ resipe.image.url }}" style="border-radius: 15px;width: 100%;"/>
+                            <img src="{{ resipe.image.url }}" style="border-radius: 15px;"/>
                         {% endif %}
                     </div>
                     <div class="right">
@@ -36,33 +36,63 @@
 
 {% endblock %}
 {% block js_src %}
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-    <script>
-        const products = document.querySelectorAll('.product');
+{#    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>#}
+{#    <script>#}
+{#        const products = document.querySelectorAll('.product');#}
+{##}
+{#        const observer = new IntersectionObserver((entries) => {#}
+{#            let delay = 0;#}
+{##}
+{#            entries.forEach((entry) => {#}
+{#                if (entry.isIntersecting) {#}
+{#                    setTimeout(() => {#}
+{#                        entry.target.classList.add('visible');#}
+{#                    }, delay);#}
+{#                    delay += 200;#}
+{#                    observer.unobserve(entry.target); // فقط یه بار اجرا شه#}
+{#                }#}
+{#            });#}
+{#        }, {threshold: 0.2});#}
+{##}
+{#        products.forEach(product => observer.observe(product));#}
+{#    </script>#}
+{#    <script>#}
+{#    const grid = document.querySelector('#masonry-container');#}
+{#    const msnry = new Masonry(grid, {#}
+{#        itemSelector: '.product',#}
+{#        columnWidth: 271,#}
+{#        gutter: 30,#}
+{#        percentPosition: true#}
+{#    });#}
+{##}
+{#    const products = document.querySelectorAll('.product');#}
+{##}
+{#    const observer = new IntersectionObserver((entries) => {#}
+{#        entries.forEach(entry => {#}
+{#            if (entry.isIntersecting) {#}
+{#                entry.target.classList.add('visible');#}
+{#                observer.unobserve(entry.target);#}
+{#                // بعد از نمایان شدن، layout رو دوباره تنظیم کن#}
+{#                msnry.layout();#}
+{#            }#}
+{#        });#}
+{#    }, { threshold: 0.1 });#}
+{##}
+{#    products.forEach(product => observer.observe(product));#}
+{#</script>#}
 
-        const observer = new IntersectionObserver((entries) => {
-            let delay = 0;
-
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, delay);
-                    delay += 200;
-                    observer.unobserve(entry.target); // فقط یه بار اجرا شه
-                }
-            });
-        }, {threshold: 0.2});
-
-        products.forEach(product => observer.observe(product));
-    </script>
-    <script>
+<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+<script>
     const grid = document.querySelector('#masonry-container');
     const msnry = new Masonry(grid, {
         itemSelector: '.product',
-        columnWidth: 271,
+        columnWidth: '.product',
         gutter: 30,
         percentPosition: true
+    });
+
+    imagesLoaded(grid, function() {
+        msnry.layout();
     });
 
     const products = document.querySelectorAll('.product');
@@ -71,13 +101,16 @@
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                imagesLoaded(entry.target, function () {
+                    msnry.layout();
+                });
                 observer.unobserve(entry.target);
-                // بعد از نمایان شدن، layout رو دوباره تنظیم کن
-                msnry.layout();
             }
         });
     }, { threshold: 0.1 });
 
     products.forEach(product => observer.observe(product));
 </script>
+
+
 {% endblock %}
