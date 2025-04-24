@@ -1,0 +1,75 @@
+/* content.css - سبک ian تیره و مدرن */
+
+body    {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+div.joda {
+
+    display: flex;
+    flex-flow: row;
+    gap: 50px;
+    flex-wrap: wrap;
+    height: fit-content;
+
+}
+
+div.product {
+    width: calc(100% / 3 - 35px);
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+
+
+}
+
+.product.visible {
+    opacity: 1;
+}
+
+.mother {
+    max-width: 80%;
+    margin: 40px auto;
+    padding: 50px;
+    box-sizing: border-box;
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+
+.mother a {
+    text-decoration: none;
+    display: inline;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: white;
+    border: none;
+
+}
+
+.mother h1 {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+.mother h2 {
+    font-size: 24px;
+    color: #90caf9;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.mother p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    color: #cfcfcf;
+    border-left: 3px solid #555;
+    padding-left: 10px;
+}

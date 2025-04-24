@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'edit.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <h1>ویرایش دستور پخت</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">ذخیره تغییرات</button>
+    </form>
+    <!-- دکمه حذف -->
+    <button type="button" onclick="openDeleteModal({{ object.id }})">🗑️ حذف</button>
+
+    <!-- Modal (مخفی در حالت عادی) -->
+    <div id="delete-modal-{{ object.id }}" class="delete-modal hidden">
+        <div class="modal-content">
+            <p>مطمئنی می‌خوای <strong>{{ object.title }}</strong> رو حذف کنی؟</p>
+            <form method="POST" action="{% url 'delete' object.id %}">
+                {% csrf_token %}
+                <button type="submit">✅ بله، حذف کن</button>
+                <button type="button" onclick="closeDeleteModal({{ object.id }})">❌ نه</button>
+            </form>
+        </div>
+    </div>
+
+
+    <a href="{% url 'home' %}">بازگشت</a>
+
+{% endblock %}
+{% block js_src %}
+
+    <script>
+        function openDeleteModal(id) {
+            const modal = document.getElementById(`delete-modal-${id}`);
+            if (modal) {
+                modal.classList.remove('hidden');
+            } else {
+                console.log("modal not found for id:", id);
+            }
+        }
+
+        function closeDeleteModal(id) {
+            const modal = document.getElementById(`delete-modal-${id}`);
+            if (modal) {
+                modal.classList.add('hidden');
+            }
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,69 @@
+/* create.css */
+
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.form-row {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 25px;
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.form-row form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-row input,
+.form-row textarea,
+.form-row select {
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    font-size: 14px;
+    outline: none;
+}
+
+.form-row input:focus,
+.form-row textarea:focus,
+.form-row select:focus {
+    border: 1px solid #90caf9;
+    background-color: #333;
+}
+
+.form-row button {
+    background-color: #90caf9;
+    color: #121212;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-row button:hover {
+    background-color: #64b5f6;
+}
+
+/* لینک برگشت */
+a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #90caf9;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
